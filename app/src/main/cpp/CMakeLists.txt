@@ -7,7 +7,7 @@ if(ANDROID)
   add_library(${TARGET_NAME} SHARED platformplugin_android.cpp
                                     graphicsplugin_opengles.cpp)
   add_compile_definitions(${TARGET_NAME} PRIVATE XR_USE_PLATFORM_ANDROID
-                          XR_USE_GRAPHICS_API_OPENGLES)
+                          XR_USE_GRAPHICS_API_OPENGL_ES)
   target_link_libraries(
     ${TARGET_NAME}
     android
@@ -36,8 +36,9 @@ target_sources(
   PRIVATE main.cpp openxr_program.cpp logger.cpp platformplugin_factory.cpp
           graphicsplugin_factory.cpp common/gfxwrapper_opengl.c)
 target_include_directories(
-  ${TARGET_NAME} PRIVATE ${CMAKE_CURRENT_LIST_DIR}/include
-                         ${CMAKE_CURRENT_LIST_DIR})
+  ${TARGET_NAME}
+  PRIVATE ${CMAKE_CURRENT_LIST_DIR}/include ${CMAKE_CURRENT_LIST_DIR}
+          ${CMAKE_CURRENT_LIST_DIR}/common)
 if(GLSLANG_VALIDATOR AND NOT GLSLC_COMMAND)
   target_compile_definitions(${TARGET_NAME} PRIVATE USE_GLSLANGVALIDATOR)
 endif()

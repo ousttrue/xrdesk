@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 // Open this directory in Android Studio, or build with Gradle,
-// to build the "hello_xr" sample application
+// to build the "xrdesk" sample application
 buildscript {
     repositories {
         google()

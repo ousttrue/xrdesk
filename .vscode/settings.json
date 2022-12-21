@@ -13,4 +13,12 @@
     "clangd.arguments": [
         "--compile-commands-dir=${workspaceFolder}/build_android"
     ],
+    // "cmake.buildDirectory": "${workspaceFolder}/build",
+    // "cmake.configureSettings": {
+    //     "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+    //     "CMAKE_INSTALL_PREFIX": "${workspaceFolder}/prefix",
+    // },
+    // "clangd.arguments": [
+    //     "--compile-commands-dir=${workspaceFolder}/build"
+    // ],
 }

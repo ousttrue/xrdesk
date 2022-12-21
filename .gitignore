@@ -1,2 +1,7 @@
-build
-prefix
+/build/
+/prefix/
+/build_android/
+/prefix_android/
+/thirdparty/*
+!/thirdparty/CMakeLists.txt
+

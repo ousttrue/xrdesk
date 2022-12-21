@@ -4,4 +4,9 @@
 /prefix_android/
 /thirdparty/*
 !/thirdparty/CMakeLists.txt
-
+/.gradle/
+/app/.cxx/
+/app/build/
+/.idea/
+gradlew*
+/gradle/

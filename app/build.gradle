@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+// These next few lines are just to make the version match the OpenXR release.
+// project.ext.repoRoot = file('../../third_party/OpenXR-SDK-Source')
+// apply from: file('version.gradle')
+
+android {
+    compileSdkVersion 29
+    // buildToolsVersion "30.0.3"
+    ndkVersion "21.4.7075529"
+    namespace "com.khronos.hello_xr"
+    defaultConfig {
+        applicationId "com.khronos.openxr.hello_xr"
+        // for Vulkan, need at least 24
+        minSdkVersion 24
+        compileSdkVersion 26
+
+        // versionName = project.versionOpenXR.toString() + project.versionQualifier
+        // versionCode = project.versionOpenXR.getVersionCode()
+
+        ndk.abiFilters 'arm64-v8a'
+
+        externalNativeBuild {
+            cmake {
+                // arguments '-DANDROID_STL=c++_shared'
+                arguments "-DBUILD_LOADER=ON",
+                    "-DBUILD_ALL_EXTENSIONS=ON",
+                    "-DBUILD_API_LAYERS=OFF",
+                    "-DBUILD_TESTS=OFF",
+                    "-DBUILD_CONFORMANCE_TESTS=OFF",
+                    "-DCMAKE_VERBOSE_MAKEFILE=ON"
+                cppFlags '-DDEFAULT_GRAPHICS_PLUGIN_OPENGLES'
+                // targets 'hello_xr', 'openxr_loader'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            version "3.22.1"
+            path "../CMakeLists.txt"
+        }
+    }
+}
